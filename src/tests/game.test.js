@@ -110,20 +110,21 @@ it('should call correct description, and correct line number', () => {
       });
       it('should increase snippet index only after correct answer', () => {
         const game = new Game('Alice', 'Bob');
-        const initialIndex = game.currentSnippetIndex
+        const initialIndex = game.currentSnippetIndex;
         const snippet = game.getCurrentSnippet();
-        game.evaluateGuess(snippet.correctLine, snippet.correctDescription)
-        expect(game.currentSnippetIndex).toBe(initialIndex + 1)
+        game.evaluateGuess(snippet.correctLine, snippet.correctDescription);
+        expect(game.currentSnippetIndex).toBe(initialIndex + 1);
 
-        game.evaluateGuess(123, 'wrong description')
-        expect(game.currentSnippetIndex).toBe(initialIndex)
+        game.currentSnippetIndex = initialIndex; // Reset the snippet index
+        game.evaluateGuess(123, 'wrong description');
+        expect(game.currentSnippetIndex).toBe(initialIndex);
     });
     it('Switch player after two incorrect attempts', () => {
         const game = new Game('Alice', 'Bob');
         const initialPlayer = game.currentPlayer;
-        game.evaluateGuess(123, 'wrong description')
-        game.evaluateGuess(123, 'wrong description')
-        expect(game.currentPlayer).not.toBe(initialPlayer)
+        game.evaluateGuess(123, 'wrong description');
+        game.evaluateGuess(123, 'wrong description');
+        expect(game.currentPlayer).not.toBe(initialPlayer);
     });
 });
 });
