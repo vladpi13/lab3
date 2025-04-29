@@ -47,6 +47,13 @@ class Game {
       this.awardPoint()
       this.switchTurn();
       this.currentSnippetIndex++;
+      this.attempts = 0
+    } else {
+        this.attempts++
+        if (this.attempts === 2) {
+            this.switchTurn()
+            this.attempts = 0
+        }
     }
     return { isCorrect: isCorrect };
   }
