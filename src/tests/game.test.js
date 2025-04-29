@@ -19,4 +19,11 @@ describe('Game', () => {
     const game = new Game('Alice', 'Bob');
     expect(game.currentPlayer).toBe('Alice');
   });
+  it('should switch turns correctly', () => {
+    const game = new Game('Alice', 'Bob');
+    game.switchTurn();
+    expect(game.currentPlayer).toBe('Bob');
+    game.switchTurn();
+    expect(game.currentPlayer).toBe('Alice');
+  });
 });
