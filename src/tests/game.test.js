@@ -79,5 +79,10 @@ it('should call correct description, and correct line number', () => {
       const result = game.evaluateGuess(snippet.correctLine, snippet.correctDescription);
       expect(result.isCorrect).toBe(true);
     });
+    it('should return { isCorrect: false } for an incorrect guess', () => {
+        const game = new Game('Alice', 'Bob');
+        const result = game.evaluateGuess(999, 'Incorrect description');
+        expect(result.isCorrect).toBe(false);
+      });
 });
 });
