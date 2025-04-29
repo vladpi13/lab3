@@ -118,5 +118,12 @@ it('should call correct description, and correct line number', () => {
         game.evaluateGuess(123, 'wrong description')
         expect(game.currentSnippetIndex).toBe(initialIndex)
     });
+    it('Switch player after two incorrect attempts', () => {
+        const game = new Game('Alice', 'Bob');
+        const initialPlayer = game.currentPlayer;
+        game.evaluateGuess(123, 'wrong description')
+        game.evaluateGuess(123, 'wrong description')
+        expect(game.currentPlayer).not.toBe(initialPlayer)
+    });
 });
 });
