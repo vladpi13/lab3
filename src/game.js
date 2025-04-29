@@ -6,5 +6,9 @@ class Game {
     this.player2Score = 0;
     this.currentPlayer = player1;
     }
+    
+    switchTurn() {
+        this.currentPlayer = (this.currentPlayer === this.player1) ? this.player2 : this.player1;
+      }
 }
   module.exports = Game;
