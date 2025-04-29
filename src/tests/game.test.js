@@ -58,4 +58,10 @@ it('should return null (tie) when all snippets are used and scores are equal', (
     game.player2Score = 1;
     expect(game.getWinner()).toBe(null);
 });
+it('should call correct description, and correct line number', () => {
+    const game = new Game('Alice', 'Bob');
+    const currentSnippet = game.getCurrentSnippet();
+    expect(currentSnippet.correctLine).toBeDefined();
+    expect(currentSnippet.correctDescription).toBeDefined();
+  });
 });
