@@ -84,5 +84,12 @@ it('should call correct description, and correct line number', () => {
         const result = game.evaluateGuess(999, 'Incorrect description');
         expect(result.isCorrect).toBe(false);
       });
+      it('should switch players after a correct guess', () => {
+        const game = new Game('Alice', 'Bob');
+        const initialPlayer = game.currentPlayer;
+        const snippet = game.getCurrentSnippet();
+        game.evaluateGuess(snippet.correctLine, snippet.correctDescription);
+        expect(game.currentPlayer).not.toBe(initialPlayer);
+      });
 });
 });
