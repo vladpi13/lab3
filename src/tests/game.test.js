@@ -50,4 +50,12 @@ it('should determine the winner correctly when all snippets are used and player 
     game.player2Score = 2;
     expect(game.getWinner()).toBe('Bob');
 });
+it('should return null (tie) when all snippets are used and scores are equal', () => {
+    const game = new Game('Alice', 'Bob');
+    game.snippets = [1, 2, 3]; // Simulate snippets
+    game.currentSnippetIndex = 3; // Simulate all snippets used
+    game.player1Score = 1;
+    game.player2Score = 1;
+    expect(game.getWinner()).toBe(null);
+});
 });
