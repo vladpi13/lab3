@@ -39,5 +39,9 @@ class Game {
       getCurrentSnippet() {
         return this.snippets[this.currentSnippetIndex];
       }
+      
+      evaluateGuess(lineNumber, description) {
+        return { isCorrect: true }; // For now, always return true
+      }
 }
   module.exports = Game;
