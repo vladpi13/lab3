@@ -39,8 +39,10 @@ class Game {
       getCurrentSnippet() {
         return this.snippets[this.currentSnippetIndex];
       }
-      
+
       evaluateGuess(lineNumber, description) {
+        const snippet = this.getCurrentSnippet();
+        const isCorrect = snippet.correctLine === lineNumber && snippet.correctDescription === description;
         return { isCorrect: true }; // For now, always return true
       }
 }
