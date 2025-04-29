@@ -15,4 +15,8 @@ describe('Game', () => {
     expect(game.player1Score).toBe(0);
     expect(game.player2Score).toBe(0);
   });
+  it('should start with player 1 as current player', () => {
+    const game = new Game('Alice', 'Bob');
+    expect(game.currentPlayer).toBe('Alice');
+  });
 });
