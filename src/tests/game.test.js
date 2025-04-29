@@ -64,4 +64,12 @@ it('should call correct description, and correct line number', () => {
     expect(currentSnippet.correctLine).toBeDefined();
     expect(currentSnippet.correctDescription).toBeDefined();
   });
+  it('should return null (tie) when all snippets used and scores is equal to zero', () => {
+    const game = new Game('Alice', 'Bob');
+    game.snippets = [1, 2, 3]; // Simulate snippets
+    game.currentSnippetIndex = 3; // Simulate all snippets used
+    game.player1Score = 0;
+    game.player2Score = 0;
+    expect(game.getWinner()).toBe(null);
+  });
 });
