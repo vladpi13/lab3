@@ -91,5 +91,13 @@ it('should call correct description, and correct line number', () => {
         game.evaluateGuess(snippet.correctLine, snippet.correctDescription);
         expect(game.currentPlayer).not.toBe(initialPlayer);
       });
+      it('should increment the current player\'s score after a correct guess', () => {
+        const game = new Game('Alice', 'Bob');
+        const initialScore = game.currentPlayer === game.player1 ? game.player1Score : game.player2Score;
+        const snippet = game.getCurrentSnippet();
+        game.evaluateGuess(snippet.correctLine, snippet.correctDescription);
+        const newScore = game.currentPlayer === game.player1 ? game.player1Score : game.player2Score;
+        expect(newScore).toBe(initialScore + 1);
+      });
 });
 });
