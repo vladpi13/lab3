@@ -30,5 +30,4 @@ const codes = [
         correctDescription: "Неправильное условие цикла (i <= b)"
     }
 ];
-
-window.codes = codes;
+module.exports = codes;

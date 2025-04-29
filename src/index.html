@@ -85,7 +85,11 @@
             player1ScoreElem.textContent = player1.score;
             player2ScoreElem.textContent = player2.score;
             currentPlayerNameElem.textContent = currentPlayer.name;
-            codeSnippetElem.textContent = window.codes[currentSnippetIndex].code;
+            if (currentSnippetIndex < window.codes.length) {
+                codeSnippetElem.textContent = window.codes[currentSnippetIndex].code;
+            } else {
+                codeSnippetElem.textContent = "Все фрагменты кода пройдены!"; // Или что-то подобное
+            }
         }
 
         function switchPlayer() {
@@ -121,9 +125,6 @@
 
         function nextSnippet() {
             currentSnippetIndex++;
-            if (currentSnippetIndex < window.codes.length) {
-                codeSnippetElem.textContent = window.codes[currentSnippetIndex].code;
-            }
         }
 
         submitGuessButton.addEventListener('click', () => {
@@ -143,30 +144,30 @@
                     player2ScoreElem.textContent = player2.score;
                 }
                 attempts = 0;
-                nextSnippet();
-                switchPlayer();
+                nextSnippet(); // Сначала переходим к следующему сниппету
+
+                const winner = getWinner();  // *ПОСЛЕ* перехода
+                if (winner) {
+                    endGame(winner);
+                } else { // Только если игра НЕ закончилась, переключаем игрока
+                    switchPlayer();
+                }
             } else {
                 resultDiv.textContent = "Неверно. Попробуйте еще раз.";
                 attempts++;
-            }
 
+                if (attempts === 2) {
+                    resultDiv.textContent = "Неверно. Ход переходит к следующему игроку.";
+                    switchPlayer()
+                    attempts = 0;
+                }
+            }
             lineNumberInput.value = '';
             errorDescriptionInput.value = '';
-            updateUI()
-
-            if (attempts === 2) {
-                resultDiv.textContent = "Неверно. Ход переходит к следующему игроку.";
-                switchPlayer()
-                updateUI()
-                attempts = 0;
-            }
-
-            const winner = getWinner();
-            if (winner) {
-                endGame(winner);
-            }
+            updateUI() 
         });
-        updateUI()
+
+        updateUI() 
     </script>
 </body>
 </html>
