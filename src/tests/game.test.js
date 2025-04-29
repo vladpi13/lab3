@@ -26,4 +26,12 @@ describe('Game', () => {
     game.switchTurn();
     expect(game.currentPlayer).toBe('Alice');
   });
+  it('should award points to the current player', () => {
+    const game = new Game('Alice', 'Bob');
+    game.awardPoint();
+    expect(game.player1Score).toBe(1);
+    game.switchTurn();
+    game.awardPoint();
+    expect(game.player2Score).toBe(1);
+  });
 });
