@@ -43,6 +43,9 @@ class Game {
       evaluateGuess(lineNumber, description) {
         const snippet = this.getCurrentSnippet();
         const isCorrect = snippet.correctLine === lineNumber && snippet.correctDescription === description;
+        if (isCorrect) {
+          this.switchTurn();
+        }
         return { isCorrect: isCorrect };
       }
 }
