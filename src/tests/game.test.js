@@ -99,5 +99,12 @@ it('should call correct description, and correct line number', () => {
         const newScore = game.currentPlayer === game.player1 ? game.player1Score : game.player2Score;
         expect(newScore).toBe(initialScore + 1);
       });
+      it('should not increment the score after incorrect guess', () => {
+        const game = new Game('Alice', 'Bob');
+        const initialScore = game.currentPlayer === game.player1 ? game.player1Score : game.player2Score;
+        game.evaluateGuess(123, 'wrong description');
+        const newScore = game.currentPlayer === game.player1 ? game.player1Score : game.player2Score;
+        expect(newScore).toBe(initialScore);
+    });
 });
 });
