@@ -126,5 +126,14 @@ it('should call correct description, and correct line number', () => {
         game.evaluateGuess(123, 'wrong description');
         expect(game.currentPlayer).not.toBe(initialPlayer);
     });
+    describe('getCurrentSnippet', () => {
+        it('should return snippet properties', () => {
+            const game = new Game('Alice', 'Bob')
+            const snippet = game.getCurrentSnippet()
+            expect(snippet.code).toBeDefined()
+            expect(snippet.correctLine).toBeDefined()
+            expect(snippet.correctDescription).toBeDefined()
+        });
+    })
 });
 });
