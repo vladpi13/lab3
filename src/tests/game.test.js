@@ -10,4 +10,9 @@ describe('Game', () => {
     expect(game.player1).toBe('Alice');
     expect(game.player2).toBe('Bob');
   });
+  it('should initialize scores to 0', () => {
+    const game = new Game('Alice', 'Bob');
+    expect(game.player1Score).toBe(0);
+    expect(game.player2Score).toBe(0);
+  });
 });
