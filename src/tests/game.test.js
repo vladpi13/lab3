@@ -34,4 +34,12 @@ describe('Game', () => {
     game.awardPoint();
     expect(game.player2Score).toBe(1);
   });
+  it('should determine the winner correctly when all snippets are used and player 1 has a higher score', () => {
+    const game = new Game('Alice', 'Bob');
+    game.snippets = [1, 2, 3]; // Simulate snippets
+    game.currentSnippetIndex = 3; // Simulate all snippets used
+    game.player1Score = 2;
+    game.player2Score = 1;
+    expect(game.getWinner()).toBe('Alice');
+});
 });
