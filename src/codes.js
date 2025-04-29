@@ -30,4 +30,9 @@ const codes = [
         correctDescription: "Неправильное условие цикла (i <= b)"
     }
 ];
-module.exports = codes;
+
+if (typeof window !== 'undefined') {
+    window.codes = codes; 
+}
+
+module.exports = codes; 

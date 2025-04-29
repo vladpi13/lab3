@@ -1,6 +1,10 @@
 const Game = require('../game');
 
 describe('Game', () => {
+  let game;
+  beforeEach(() => {
+        game = new Game('Alice', 'Bob');
+    });
   it('should create a new Game instance', () => {
     const game = new Game('Player1', 'Player2');
     expect(game).toBeDefined();
