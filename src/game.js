@@ -1,3 +1,5 @@
+const codes = require('./codes');
+
 class Game {
     constructor(player1, player2) {
         this.player1 = player1;
@@ -5,7 +7,7 @@ class Game {
     this.player1Score = 0;
     this.player2Score = 0;
     this.currentPlayer = player1;
-    this.snippets = [1, 2, 3];
+    this.snippets = codes;
     this.currentSnippetIndex = 0;
     }
 
@@ -28,10 +30,14 @@ class Game {
           } else if (this.player2Score > this.player1Score) {
             return this.player2;
           } else {
-            return null; // It's a tie
+            return null; 
           }
         }
-        return null; // Game is not over yet
+        return null; 
+      }
+
+      getCurrentSnippet() {
+        return this.snippets[this.currentSnippetIndex];
       }
 }
   module.exports = Game;
