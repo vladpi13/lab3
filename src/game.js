@@ -44,7 +44,8 @@ class Game {
         const snippet = this.getCurrentSnippet();
         const isCorrect = snippet.correctLine === lineNumber && snippet.correctDescription === description;
         if (isCorrect) {
-          this.switchTurn();
+            this.awardPoint()
+            this.switchTurn();
         }
         return { isCorrect: isCorrect };
       }
