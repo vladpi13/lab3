@@ -45,7 +45,7 @@
             <label for="error-description">Описание ошибки:</label>
             <input type="text" id="error-description" required><br><br>
 
-            <button id="submit-guess">Отправить ответ</button>
+            <button id="submit-guess">Ответить</button>
         </div>
 
         <div id="result"></div>
@@ -132,6 +132,11 @@
 
             const lineNumber = lineNumberInput.value;
             const errorDescription = errorDescriptionInput.value;
+
+            if (!lineNumber || !errorDescription) {
+                alert("Введите данные");
+                return; // Прерываем обработку, если поля пустые
+            }
 
             const isCorrect = evaluateGuess(lineNumber, errorDescription);
 
